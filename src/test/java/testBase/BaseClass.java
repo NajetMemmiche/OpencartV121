@@ -17,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
@@ -30,7 +31,8 @@ import org.apache.logging.log4j.Logger;  //Log4j
 
 public class BaseClass {
 
-public static WebDriver driver;
+//public static WebDriver driver; //for capture screenshot make it static other wise remove static
+public WebDriver driver; 
 public Logger logger;  //Log4j
 public Properties p;
 	
@@ -52,15 +54,16 @@ public Properties p;
 			//os
 			if(os.equalsIgnoreCase("windows"))
 			{
-				capabilities.setPlatform(Platform.WIN11);
+				capabilities.setPlatform(Platform.WINDOWS);
+			}
+			else if(os.equalsIgnoreCase("linux"))
+			{
+				capabilities.setPlatform(Platform.LINUX);
+				
 			}
 			else if (os.equalsIgnoreCase("mac"))
 			{
 				capabilities.setPlatform(Platform.MAC);
-			}
-			else if (os.equalsIgnoreCase("linux"))
-			{
-				capabilities.setPlatform(Platform.LINUX);
 			}
 			else
 			{
